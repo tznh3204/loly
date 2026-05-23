@@ -508,7 +508,7 @@ button:disabled {
     }
 }
 
-/* تحسينات الشاشات الصغيرة جداً */
+/* تحسينات الشاشات الصغيرة جدا */
 @media (max-width: 360px) {
     .card {
         padding: 12px 10px;
@@ -551,14 +551,14 @@ button:disabled {
     <h1>رسائل خاصة من فاملي الحلو</h1>
 
     <div id="message">
-        اضغط ابدأ 🤍
+        اضغط ابدا 🤍
     </div>
 
     <div class="sender-name" id="senderName"></div>
 
     <div class="button-container">
         <button id="mainBtn" onclick="nextMessage()">
-            ابدأ
+            ابدا
         </button>
 
         <button id="musicBtn" onclick="toggleMusic()">
@@ -568,31 +568,30 @@ button:disabled {
 
 </div>
 
-<audio id="bgMusic" preload="none" crossorigin="anonymous">
+<audio id="bgMusic" preload="metadata" crossorigin="anonymous" type="audio/mpeg">
 </audio>
 
 <script>
 
 const messages = [
     {text: "لولي ؟", sender: "من الفاملي"},
-    {text: "ثاني أعيادي معك\nأو هل من الصح أقول كل أوقاتي معك عيد؟\nمن يوم عرفتك وأنا كل أيامي أعياد", sender: "منار 💕"},
-    {text: "وكل عام وأنتِ سعيدة\nوأنا الأسعد لأنك بحياتي ❤️🫵🏻", sender: "منار ✨"},
-    {text: "كل عام وانتي بخيرر يا ستريمري العسل\nالله يسعدك ويوفقك ويحقق لك كل اللي تتمنينه\nوعسى أيامك كلها فرح وسعادة 🤍", sender: "نورا 💝"},
-    {text: "يا ساكناً في مهجتي وفؤادي\nتحلو بقربك فرحة الأعياد\nاحبببكك ححووووووب لوليي🫶🏻🫶🏻🫶🏻", sender: "نونه 🩷"},
-    {text: "عيدك سعيد حبيبي\nوجعلك موجودة بكل عيد\nيااا لبى يا مربى", sender: "نوني 🌸"},
-    {text: "عيد اضحى سعيد يا لولي\nوممتنه مره لوجودك الحلو بحياتي🤍", sender: "جنو 💖"},
-    {text: "كل عام وانتي بخير يا وجه الخير\nعيدك مبارك\nاعاده الله علينا وعليك بالصحة و العافيه\nطوري لي السكار", sender: "سولو 💸"},
-    {text: "كل عام وانتي عيدنا يا روحي\nعيدك مبارك يا رب كل عيدي معك\nلان الفرحة قربك فرحتين\nاحبك موت", sender: "امون 🎀"},
-    {text: "كل عام وانتي الخير بحد ذاته\nكل عام وانتي لعيدي فرحة\nعسى كل عيد اشوفك بخير\nو عسى ربي يخليك معي بكل سنة", sender: "جوجو 🦋"},
-    {text: "كل عام وبثوثك عيدنا\nعسى ربي يعوضك على كل ثانية تقضينها بالبث\n10 دولار", sender: "الفاملي الباقي 💸"},
-    {text: "عيدك مبارك يا أجمل صدفة ❤\nكل عام وأنتِ الشي الحلو اللي يجي مع العيد\nعسى العيد يجيك بفرح يشبه ضحكتك", sender: "روند 💫"},
-    {text: "شكرا خاص لرودي على كل شي يسويه و على كل فكرة يجيبها عشان تخلي البث حلوو و الستريمر سعيدة\nصح ما شفنا رسايله بس الحمد لله على القلب", sender: "الشكر الجماعي 🤝"},
-    {text: "شكر خاص بعد ل:\n\nلوكا 🌹 مسؤول الرسائل\nنوف 🎵 مسؤولة الأغاني\nرودي 💻 مسؤول البرمجة\n\nشكراً لكل من ساهم في هذا", sender: "فريق العمل 💜"}
+    {text: "ثاني اعيادي معك\nاو هل من الصح اقول كل اوقاتي معك عيد؟\nمن يوم عرفتك وانا كل ايامي اعياد", sender: "منار"},
+    {text: "وكل عام وانتِ سعيدة\nوانا الاسعد لانك بحياتي", sender: "منار"},
+    {text: "كل عام وانتي بخيرر يا ستريمري العسل\nالله يسعدك ويوفقك ويحقق لك كل اللي تتمنينه\nوعسى ايامك كلها فرح وسعادة", sender: "نورا"},
+    {text: "يا ساكنا في مهجتي وفؤادي\nتحلو بقربك فرحة الاعياد\nاحبببكك ححووووووب لوليي", sender: "نونه"},
+    {text: "عيدك سعيد حبيبي\nوجعلك موجودة بكل عيد\nيااا لبى يا مربى", sender: "نوني"},
+    {text: "عيد اضحى سعيد يا لولي\nوممتنه مره لوجودك الحلو بحياتي", sender: "جنو"},
+    {text: "كل عام وانتي بخير يا وجه الخير\nعيدك مبارك\nاعاده الله علينا وعليك بالصحة و العافيه\nطوري لي السكار", sender: "سولو"},
+    {text: "كل عام وانتي عيدنا يا روحي\nعيدك مبارك يا رب كل عيدي معك\nلان الفرحة قربك فرحتين\nاحبك موت", sender: "امون"},
+    {text: "كل عام وانتي الخير بحد ذاته\nكل عام وانتي لعيدي فرحة\nعسى كل عيد اشوفك بخير\nو عسى ربي يخليك معي بكل سنة", sender: "جوجو"},
+    {text: "كل عام وبثوثك عيدنا\nعسى ربي يعوضك على كل ثانية تقضينها بالبث\n10 دولار", sender: "الفاملي الباقي"},
+    {text: "عيدك مبارك يا احلى صدفة\nكل عام وانتِ الشي الحلو اللي يجي مع العيد\nعسى العيد يجيك بفرح يشبه ضحكتك", sender: "روند"},
+    {text: "شكرا خاص لرودي على كل شي يسويه و على كل فكرة يجيبها عشان تخلي البث حلوو و الستريمر سعيدة\nصح ما شفنا رسايله بس الحمد لله على القلب", sender: "الشكر الجماعي"},
+    {text: "شكر خاص بعد ل:\n\nلوكا - مسؤول الرسائل\nنوف - مسؤولة الاغاني\nرودي - مسؤول البرمجة\n\nشكرا لكل من ساهم في هذا", sender: "فريق العمل"}
 ];
 
 let index = -1;
 let isPlaying = false;
-let audioUrl = "";
 
 function nextMessage(){
     index++;
@@ -608,15 +607,15 @@ function nextMessage(){
             senderName.innerText = "- " + messages[index].sender;
 
             if(index === messages.length - 1){
-                button.innerText = "إعادة تشغيل";
+                button.innerText = "اعادة تشغيل";
             } else {
                 button.innerText = "التالي";
             }
         } else {
             index = -1;
-            message.innerText = "اضغط ابدأ 🤍";
+            message.innerText = "اضغط ابدا 🤍";
             senderName.innerText = "";
-            button.innerText = "ابدأ";
+            button.innerText = "ابدا";
         }
 
         message.style.opacity = "1";
@@ -632,22 +631,20 @@ function toggleMusic(){
         btn.innerText = "🎵 تشغيل الموسيقى";
         isPlaying = false;
     } else {
-        // Check if audio source is set
-        if(!audioUrl) {
-            audioUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
-            audio.src = audioUrl;
-        }
+        // رابط مباشر للاغنية
+        audio.src = "https://stream.zeno.fm/sqf3e8hutsruv";
         
-        audio.play().catch(function(error) {
+        audio.play().then(() => {
+            btn.innerText = "ايقاف الموسيقى";
+            isPlaying = true;
+        }).catch(function(error) {
             console.log("خطأ في التشغيل:", error);
-            btn.innerText = "🎵 خطأ في التشغيل";
+            btn.innerText = "خطأ في التشغيل";
             isPlaying = false;
             setTimeout(() => {
                 btn.innerText = "🎵 تشغيل الموسيقى";
             }, 2000);
         });
-        btn.innerText = "⏸️ إيقاف الموسيقى";
-        isPlaying = true;
     }
 }
 
@@ -665,10 +662,10 @@ function createHeart(){
     },8000);
 }
 
-// إنشاء القلوب كل 150ms
+// انشاء القلوب كل 150ms
 const heartInterval = setInterval(createHeart, 150);
 
-// تنظيف الموارد عند إغلاق الصفحة
+// تنظيف الموارد عند اغلاق الصفحة
 window.addEventListener('beforeunload', () => {
     clearInterval(heartInterval);
     const audio = document.getElementById("bgMusic");
@@ -678,7 +675,7 @@ window.addEventListener('beforeunload', () => {
     }
 });
 
-// دعم لمس أفضل للأزرار
+// دعم لمس افضل للازرار
 document.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('touchstart', function() {
         this.style.opacity = "0.8";
