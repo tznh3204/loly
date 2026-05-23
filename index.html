@@ -5,11 +5,15 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="رسائل حب">
 
 <title>رسائل حب 🤍</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Segoe+UI&display=swap" rel="stylesheet">
 
 <style>
 
@@ -30,7 +34,7 @@ html {
 
 body{
 
-    font-family:'Cairo', sans-serif;
+    font-family:'Cairo', 'Segoe UI', sans-serif;
 
     width: 100%;
     height: 100vh;
@@ -48,8 +52,7 @@ body{
     background-image:
     radial-gradient(circle at 15% 10%, rgba(255,255,255,0.18), transparent 24%),
     radial-gradient(circle at 80% 10%, rgba(255,255,255,0.12), transparent 18%),
-    linear-gradient(180deg, rgba(255,123,156,0.22), rgba(105,34,199,0.15) 45%, rgba(44,11,74,0.22)),
-    url('https://cdn.discordapp.com/attachments/1431423889212444854/1507769560835817562/IMG_1500.jpg?ex=6a131b54&is=6a11c9d4&hm=3aa68f87967e98768a68987e2094ea19a44c179a4ea1619303cf1b19524d8e17&');
+    linear-gradient(180deg, rgba(255,123,156,0.22), rgba(105,34,199,0.15) 45%, rgba(44,11,74,0.22));
 
     background-size:cover;
 
@@ -110,6 +113,9 @@ body{
     0 0 18px rgba(255,255,255,0.6);
 
     z-index: 1;
+    
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 @keyframes float{
@@ -171,10 +177,13 @@ body{
     max-height: 85vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .card::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
 }
 
 .card::-webkit-scrollbar-track {
@@ -185,6 +194,10 @@ body{
 .card::-webkit-scrollbar-thumb {
     background: rgba(255,255,255,0.3);
     border-radius: 10px;
+}
+
+.card::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.5);
 }
 
 @keyframes fadeUp{
@@ -216,6 +229,8 @@ body{
 
     display: block;
     pointer-events: none;
+    
+    line-height: 1;
 }
 
 @keyframes beat{
@@ -243,6 +258,9 @@ h1{
 
     font-size: clamp(18px, 5vw, 28px);
     line-height: 1.3;
+    
+    font-weight: 700;
+    word-break: break-word;
 }
 
 /* الرسائل */
@@ -263,11 +281,12 @@ h1{
 
     align-items:center;
 
-    transition:0.5s;
+    transition:0.5s opacity;
 
     white-space:pre-wrap;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 /* اسم المرسل */
@@ -316,7 +335,7 @@ button{
 
     cursor:pointer;
 
-    transition:0.3s;
+    transition:all 0.3s ease;
 
     box-shadow:
     0 5px 20px rgba(255,255,255,0.25);
@@ -332,6 +351,8 @@ button{
     touch-action: manipulation;
     -webkit-user-select: none;
     user-select: none;
+    
+    font-family: 'Cairo', 'Segoe UI', sans-serif;
 }
 
 button:active{
@@ -343,6 +364,11 @@ button:hover{
     transform: scale(1.05);
     box-shadow:
     0 10px 30px rgba(255,255,255,0.4);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 /* زر الموسيقى */
@@ -396,13 +422,14 @@ button:hover{
     right:-20px;
 }
 
-/* تحسينات الجوال */
+/* تحسينات الجوال - Tablet */
 
 @media (max-width: 768px) {
     .card {
         padding: 20px 15px;
         border-radius: 25px;
         width: 92%;
+        max-height: 80vh;
     }
 
     h1 {
@@ -421,16 +448,19 @@ button:hover{
     }
 }
 
+/* تحسينات الجوال - Phone */
+
 @media (max-width: 480px) {
     body {
-        padding: 0;
+        padding: 10px;
+        height: 100dvh;
     }
 
     .card {
         padding: 15px 12px;
         border-radius: 20px;
         width: 95%;
-        max-height: 90vh;
+        max-height: 85dvh;
     }
 
     h1 {
@@ -439,13 +469,13 @@ button:hover{
     }
 
     .bigHeart {
-        font-size: 55px;
+        font-size: 50px;
         margin-bottom: 8px;
     }
 
     #message {
         min-height: 60px;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.5;
     }
 
@@ -459,6 +489,7 @@ button:hover{
         padding: 10px 15px;
         font-size: 13px;
         width: 100%;
+        max-width: 95vw;
     }
 
     #musicBtn {
@@ -469,6 +500,36 @@ button:hover{
     .button-container {
         gap: 8px;
         margin-top: 12px;
+    }
+    
+    .glow {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+/* تحسينات الشاشات الصغيرة جداً */
+@media (max-width: 360px) {
+    .card {
+        padding: 12px 10px;
+        border-radius: 18px;
+    }
+    
+    h1 {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    
+    #message {
+        font-size: 13px;
+        min-height: 50px;
+    }
+}
+
+/* Dark mode و Light mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #170322;
     }
 }
 
@@ -507,8 +568,7 @@ button:hover{
 
 </div>
 
-<audio id="bgMusic" loop crossorigin="anonymous">
-    <source src="https://omicron.123tokyo.xyz/get.php/9/0d/vqavbT87sXo.mp3?n=%D8%B3%D9%84%D8%B7%D8%A7%D9%86%20%D8%A7%D9%84%D9%85%D8%B1%D8%B4%D8%AF%20-%20%D9%83%D9%84%20%D8%A7%D9%84%D8%AD%D9%84%D8%A7%20%28%20%D8%A3%D8%BA%D9%86%D9%8A%D8%A9%20%D8%AE%D8%A7%D8%B5%D8%A9%20%D8%AD%D8%B5%D8%B1%D9%8A%D8%A7%D9%8B%20%29%20_%202025&uT=R&uN=bXAzanVpY2VwbA%3D%3D&h=4GzXr8co8oytM4Ycd_BrfA&s=1779559372&uT=R&uN=bXAzanVpY2VwbA%3D%3D&title=%D8%B3%D9%84%D8%B7%D8%A7%D9%86%20%D8%A7%D9%84%D9%85%D8%B1%D8%B4%D8%AF%20-%20%D9%83%D9%84%20%D8%A7%D9%84%D8%AD%D9%84%D8%A7%20(%20%D8%A3%D8%BA%D9%86%D9%8A%D8%A9%20%D8%AE%D8%A7%D8%B5%D8%A9%20%D8%AD%D8%B5%D8%B1%D9%8A%D8%A7%D9%8B%20)%20%7C%202025" type="audio/mpeg">
+<audio id="bgMusic" preload="none" crossorigin="anonymous">
 </audio>
 
 <script>
@@ -517,20 +577,22 @@ const messages = [
     {text: "لولي ؟", sender: "من الفاملي"},
     {text: "ثاني أعيادي معك\nأو هل من الصح أقول كل أوقاتي معك عيد؟\nمن يوم عرفتك وأنا كل أيامي أعياد", sender: "منار 💕"},
     {text: "وكل عام وأنتِ سعيدة\nوأنا الأسعد لأنك بحياتي ❤️🫵🏻", sender: "منار ✨"},
-    {text: "كل عام وانتي بخيرر يا ستريمري العسل\nالله يسعدك ويوفقك ويحقق لك كل اللي تتمنينه\nوعسى أيامك كلها فرح ووناسة\nاحبككك❤️❤️", sender: "رتوج 🎀"},
-    {text: "يا ساكناً في مهجتي وفؤادي\nتحلو بقربك فرحة الأعياد\nاحبببكك ححووووووب لوليي🫶🏻🫶🏻🫶🏻", sender: "نونه 💜"},
+    {text: "كل عام وانتي بخيرر يا ستريمري العسل\nالله يسعدك ويوفقك ويحقق لك كل اللي تتمنينه\nوعسى أيامك كلها فرح وسعادة 🤍", sender: "نورا 💝"},
+    {text: "يا ساكناً في مهجتي وفؤادي\nتحلو بقربك فرحة الأعياد\nاحبببكك ححووووووب لوليي🫶🏻🫶🏻🫶🏻", sender: "نونه 🩷"},
     {text: "عيدك سعيد حبيبي\nوجعلك موجودة بكل عيد\nيااا لبى يا مربى", sender: "نوني 🌸"},
     {text: "عيد اضحى سعيد يا لولي\nوممتنه مره لوجودك الحلو بحياتي🤍", sender: "جنو 💖"},
-    {text: "كل عام وانتي بخير يا وجه الخير\nعيدك مبارك\nاعاده الله علينا وعليك بالصحة و العافيه\nطوري لي السكار", sender: "بيتزا 🍕"},
-    {text: "كل عام وانتي عيدنا يا روحي\nعيدك مبارك يا رب كل عيدي معك\nلان الفرحة قربك فرحتين\nاحبك موت", sender: "امون 🫶🏻"},
-    {text: "كل عام وانتي الخير بحد ذاته\nكل عام وانتي لعيدي فرحة\nعسى كل عيد اشوفك بخير\nو عسى ربي يخليك معي بكل سنيني", sender: "رنو ⭐"},
+    {text: "كل عام وانتي بخير يا وجه الخير\nعيدك مبارك\nاعاده الله علينا وعليك بالصحة و العافيه\nطوري لي السكار", sender: "سولو 💸"},
+    {text: "كل عام وانتي عيدنا يا روحي\nعيدك مبارك يا رب كل عيدي معك\nلان الفرحة قربك فرحتين\nاحبك موت", sender: "امون 🎀"},
+    {text: "كل عام وانتي الخير بحد ذاته\nكل عام وانتي لعيدي فرحة\nعسى كل عيد اشوفك بخير\nو عسى ربي يخليك معي بكل سنة", sender: "جوجو 🦋"},
     {text: "كل عام وبثوثك عيدنا\nعسى ربي يعوضك على كل ثانية تقضينها بالبث\n10 دولار", sender: "الفاملي الباقي 💸"},
-    {text: "عيدك مبارك يا أجمل صدفة ❤\nكل عام وأنتِ الشي الحلو اللي يجي مع العيد\nعسى العيد يجيك بفرح يشبه ضحكتك\nوسعادة تليق بقلبك الحلو\nالله يديم عليك الضحكة وراحة البال\nويحقق لك كل اللي تتمنينه", sender: "لوكا 🌹"},
-    {text: "شكرا خاص لرودي على كل شي يسويه و على كل فكرة يجيبها عشان تخلي البث حلوو و الستريمر سعيدة\nصح ما شفنا رسالة منه لاكن هو بحد ذاته رسالة و هدية للبث و للستريمر\nالله لا يحرمنا من افكارك يا ابو شنب اخضر 💚", sender: "من الفاملي لرودي"},
-    {text: "شكر خاص بعد ل:\n\nلوكا 🌹 مسؤول الرسائل\nنوف 🎵 مسؤولة الأغاني\nالي بتطورون له السكار:  مسؤول البرمجة\n\nشكرا على كل ما تسوونه عشان تخلوا البث احسن و أحلى 💕", sender: "الشكر الختامي 🤍"}
+    {text: "عيدك مبارك يا أجمل صدفة ❤\nكل عام وأنتِ الشي الحلو اللي يجي مع العيد\nعسى العيد يجيك بفرح يشبه ضحكتك", sender: "روند 💫"},
+    {text: "شكرا خاص لرودي على كل شي يسويه و على كل فكرة يجيبها عشان تخلي البث حلوو و الستريمر سعيدة\nصح ما شفنا رسايله بس الحمد لله على القلب", sender: "الشكر الجماعي 🤝"},
+    {text: "شكر خاص بعد ل:\n\nلوكا 🌹 مسؤول الرسائل\nنوف 🎵 مسؤولة الأغاني\nرودي 💻 مسؤول البرمجة\n\nشكراً لكل من ساهم في هذا", sender: "فريق العمل 💜"}
 ];
+
 let index = -1;
 let isPlaying = false;
+let audioUrl = "";
 
 function nextMessage(){
     index++;
@@ -546,9 +608,9 @@ function nextMessage(){
             senderName.innerText = "- " + messages[index].sender;
 
             if(index === messages.length - 1){
-                button.innerText = "RESTART";
+                button.innerText = "إعادة تشغيل";
             } else {
-                button.innerText = "NEXT";
+                button.innerText = "التالي";
             }
         } else {
             index = -1;
@@ -570,8 +632,19 @@ function toggleMusic(){
         btn.innerText = "🎵 تشغيل الموسيقى";
         isPlaying = false;
     } else {
+        // Check if audio source is set
+        if(!audioUrl) {
+            audioUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+            audio.src = audioUrl;
+        }
+        
         audio.play().catch(function(error) {
             console.log("خطأ في التشغيل:", error);
+            btn.innerText = "🎵 خطأ في التشغيل";
+            isPlaying = false;
+            setTimeout(() => {
+                btn.innerText = "🎵 تشغيل الموسيقى";
+            }, 2000);
         });
         btn.innerText = "⏸️ إيقاف الموسيقى";
         isPlaying = true;
@@ -583,8 +656,8 @@ function createHeart(){
     heart.classList.add("heart");
     heart.innerHTML = "❤";
     heart.style.left = Math.random()*100 + "vw";
-    heart.style.fontSize = Math.random()*20 + 10 + "px";
-    heart.style.animationDuration = Math.random()*4 + 4 + "s";
+    heart.style.fontSize = (Math.random()*20 + 10) + "px";
+    heart.style.animationDuration = (Math.random()*4 + 4) + "s";
     document.body.appendChild(heart);
 
     setTimeout(()=>{
@@ -592,7 +665,28 @@ function createHeart(){
     },8000);
 }
 
-setInterval(createHeart,150);
+// إنشاء القلوب كل 150ms
+const heartInterval = setInterval(createHeart, 150);
+
+// تنظيف الموارد عند إغلاق الصفحة
+window.addEventListener('beforeunload', () => {
+    clearInterval(heartInterval);
+    const audio = document.getElementById("bgMusic");
+    if(audio) {
+        audio.pause();
+        audio.src = "";
+    }
+});
+
+// دعم لمس أفضل للأزرار
+document.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('touchstart', function() {
+        this.style.opacity = "0.8";
+    });
+    btn.addEventListener('touchend', function() {
+        this.style.opacity = "1";
+    });
+});
 
 </script>
 
